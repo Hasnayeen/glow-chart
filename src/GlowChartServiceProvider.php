@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Hasnayeen\GlowChart;
 
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
@@ -14,14 +14,14 @@ use Livewire\Testing\TestableLivewire;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
-use VendorName\Skeleton\Testing\TestsSkeleton;
+use Hasnayeen\GlowChart\Commands\GlowChartCommand;
+use Hasnayeen\GlowChart\Testing\TestsGlowChart;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class GlowChartServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'skeleton';
+    public static string $name = 'glow-chart';
 
-    public static string $viewNamespace = 'skeleton';
+    public static string $viewNamespace = 'glow-chart';
 
     public function configurePackage(Package $package): void
     {
@@ -35,19 +35,13 @@ class SkeletonServiceProvider extends PackageServiceProvider
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
-                    ->publishMigrations()
-                    ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub(':vendor_slug/:package_slug');
+                    ->askToStarRepoOnGitHub('hasnayeen/glow-chart');
             });
 
         $configFileName = $package->shortName();
 
         if (file_exists($package->basePath("/../config/{$configFileName}.php"))) {
             $package->hasConfigFile();
-        }
-
-        if (file_exists($package->basePath('/../database/migrations'))) {
-            $package->hasMigrations($this->getMigrations());
         }
 
         if (file_exists($package->basePath('/../resources/lang'))) {
@@ -83,18 +77,18 @@ class SkeletonServiceProvider extends PackageServiceProvider
         if (app()->runningInConsole()) {
             foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
-                    $file->getRealPath() => base_path("stubs/skeleton/{$file->getFilename()}"),
-                ], 'skeleton-stubs');
+                    $file->getRealPath() => base_path("stubs/glow-chart/{$file->getFilename()}"),
+                ], 'glow-chart-stubs');
             }
         }
 
         // Testing
-        TestableLivewire::mixin(new TestsSkeleton());
+        // TestableLivewire::mixin(new TestsGlowChart());
     }
 
     protected function getAssetPackageName(): ?string
     {
-        return ':vendor_slug/:package_slug';
+        return 'hasnayeen/glow-chart';
     }
 
     /**
@@ -103,9 +97,9 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('skeleton', __DIR__ . '/../resources/dist/components/skeleton.js'),
-            Css::make('skeleton-styles', __DIR__ . '/../resources/dist/skeleton.css'),
-            Js::make('skeleton-scripts', __DIR__ . '/../resources/dist/skeleton.js'),
+            AlpineComponent::make('glow-chart', __DIR__ . '/../resources/dist/glow-chart.js'),
+            // Css::make('glow-chart-styles', __DIR__ . '/../resources/dist/glow-chart.css'),
+            // Js::make('glow-chart-scripts', __DIR__ . '/../resources/dist/glow-chart.js'),
         ];
     }
 
@@ -115,7 +109,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getCommands(): array
     {
         return [
-            SkeletonCommand::class,
+            GlowChartCommand::class,
         ];
     }
 
@@ -141,15 +135,5 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getScriptData(): array
     {
         return [];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getMigrations(): array
-    {
-        return [
-            'create_skeleton_table',
-        ];
     }
 }

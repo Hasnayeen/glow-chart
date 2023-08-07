@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Hasnayeen\GlowChart\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class GlowChartCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'glow-chart';
 
     public $description = 'My command';
 
