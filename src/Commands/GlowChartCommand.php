@@ -5,12 +5,17 @@ namespace Hasnayeen\GlowChart\Commands;
 use Filament\Facades\Filament;
 use Filament\Panel;
 use Filament\Resources\Resource;
+use Filament\Support\Commands\Concerns\CanManipulateFiles;
+use Filament\Support\Commands\Concerns\CanValidateInput;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 class GlowChartCommand extends Command
 {
+    use CanManipulateFiles;
+    use CanValidateInput;
+
     public $signature = 'make:glow-chart {name?} {--R|resource=} {--panel=} {--F|force}';
 
     public $description = 'Create a new glow chart widget';
@@ -168,23 +173,23 @@ class GlowChartCommand extends Command
             'class' => $widgetClass,
             'namespace' => filled($resource) ? "{$resourceNamespace}\\{$resource}\\Widgets" . ($widgetNamespace !== '' ? "\\{$widgetNamespace}" : '') : $namespace . ($widgetNamespace !== '' ? "\\{$widgetNamespace}" : ''),
             'type' => match ($chart) {
-                'Line Chart' => 'line',
-                'Bar Chart' => 'bar',
-                'Pie Chart' => 'pie',
-                'Area Chart' => 'area',
-                'Donut Chart' => 'donut',
-                'Polar Area Chart' => 'polarArea',
-                'Bubble Chart' => 'bubble',
-                'Scatter Chart' => 'scatter',
-                'Radar Chart' => 'radar',
-                'Candlestick Chart' => 'candlestick',
-                'Heatmap Chart' => 'heatmap',
-                'Treemap Chart' => 'treemap',
-                'Range Bar Chart' => 'rangeBar',
-                'Range Area Chart' => 'rangeArea',
-                'Radial Bar Chart' => 'radialBar',
-                'Box Plot Chart' => 'boxPlot',
-                default => 'line',
+                'Line Chart' => 'Line',
+                'Bar Chart' => 'Bar',
+                'Pie Chart' => 'Pie',
+                'Area Chart' => 'Area',
+                'Donut Chart' => 'Donut',
+                'Polar Area Chart' => 'PolarArea',
+                'Bubble Chart' => 'Bubble',
+                'Scatter Chart' => 'Scatter',
+                'Radar Chart' => 'Radar',
+                'Candlestick Chart' => 'Candlestick',
+                'Heatmap Chart' => 'Heatmap',
+                'Treemap Chart' => 'Treemap',
+                'Range Bar Chart' => 'RangeBar',
+                'Range Area Chart' => 'RangeArea',
+                'Radial Bar Chart' => 'RadialBar',
+                'Box Plot Chart' => 'BoxPlot',
+                default => 'Line',
             },
         ]);
 

@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use Hasnayeen\GlowChart;
+use Hasnayeen\GlowChart\Glowchart;
 use Hasnayeen\GlowChart\Chart;
 use Hasnayeen\GlowChart\Enums\ChartType;
 use Hasnayeen\GlowChart\Options;
@@ -22,7 +22,7 @@ class {{ class }} extends GlowChart
             )
             ->series(
                 Series::make()
-                    ->data()
+                    ->data([])
             );
     }
 }
