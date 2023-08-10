@@ -11,7 +11,8 @@ class Toolbar
         public array $tools = [],
         public array $export = [],
         public string $autoSelected = 'zoom'
-    ) {}
+    ) {
+    }
 
     public static function make(): self
     {

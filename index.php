@@ -37,7 +37,7 @@ var_dump($jsObject);
 function convertJsObjectToPhpClass(string $className, array $jsObject, string $fileName): void
 {
     $phpClass = "<?php\n\nclass $className\n{\n";
-    $phpNestedClasses = "";
+    $phpNestedClasses = '';
 
     foreach ($jsObject as $key => $value) {
         if (is_array($value)) {
@@ -47,14 +47,14 @@ function convertJsObjectToPhpClass(string $className, array $jsObject, string $f
             $phpClass .= "    public $nestedClassName $" . lcfirst($key) . ";\n";
 
             $phpClass .= "\n    public function $key($nestedClassName $" . lcfirst($key) . "): self\n    {\n";
-            $phpClass .= "        \$this->$" . lcfirst($key) . " = $" . lcfirst($key) . ";\n\n";
+            $phpClass .= '        $this->$' . lcfirst($key) . ' = $' . lcfirst($key) . ";\n\n";
             $phpClass .= "        return \$this;\n    }\n\n";
         } else {
             // Handle properties
-            $phpClass .= "    public $" . lcfirst($key) . " = $value;\n";
+            $phpClass .= '    public $' . lcfirst($key) . " = $value;\n";
 
-            $phpClass .= "\n    public function $key(" . gettype($value) . " $" . lcfirst($key) . "): self\n    {\n";
-            $phpClass .= "        \$this->$" . lcfirst($key) . " = $" . lcfirst($key) . ";\n\n";
+            $phpClass .= "\n    public function $key(" . gettype($value) . ' $' . lcfirst($key) . "): self\n    {\n";
+            $phpClass .= '        $this->$' . lcfirst($key) . ' = $' . lcfirst($key) . ";\n\n";
             $phpClass .= "        return \$this;\n    }\n\n";
         }
     }

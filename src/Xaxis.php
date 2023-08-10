@@ -20,7 +20,8 @@ class Xaxis
         public ?bool $overwriteCategories = null,
         public string $position = 'bottom',
         public ?Labels $labels = null,
-    ) {}
+    ) {
+    }
 
     public static function make(): self
     {

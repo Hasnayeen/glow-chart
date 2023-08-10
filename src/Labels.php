@@ -20,7 +20,8 @@ class Labels
         public ?string $formatter = null,
         public bool $datetimeUTC = true,
         public array $datetimeFormatter = [],
-    ) {}
+    ) {
+    }
 
     public static function make(): self
     {
@@ -130,8 +131,7 @@ class Labels
         string $month = 'MMM \'yy',
         string $day = 'dd MMM',
         string $hour = 'HH:mm',
-    ): self
-    {
+    ): self {
         $this->datetimeFormatter = [
             'year' => $year,
             'month' => $month,

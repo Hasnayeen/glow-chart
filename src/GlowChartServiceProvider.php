@@ -9,13 +9,13 @@ use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Support\Icons\Icon;
+use Hasnayeen\GlowChart\Commands\GlowChartCommand;
+use Hasnayeen\GlowChart\Testing\TestsGlowChart;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Testing\TestableLivewire;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Hasnayeen\GlowChart\Commands\GlowChartCommand;
-use Hasnayeen\GlowChart\Testing\TestsGlowChart;
 
 class GlowChartServiceProvider extends PackageServiceProvider
 {

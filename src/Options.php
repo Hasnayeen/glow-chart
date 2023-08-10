@@ -14,7 +14,8 @@ class Options
         public ?PlotOptions $plotOptions = null,
         public ?Title $title = null,
         public ?Title $subtitle = null,
-    ) {}
+    ) {
+    }
 
     public static function make(): self
     {

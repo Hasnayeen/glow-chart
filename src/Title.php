@@ -12,7 +12,8 @@ class Title
         public int $offsetY = 0,
         public bool $floating = false,
         public ?Style $style = null,
-    ) {}
+    ) {
+    }
 
     public static function make(): self
     {

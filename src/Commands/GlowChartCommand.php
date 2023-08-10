@@ -23,7 +23,7 @@ class GlowChartCommand extends Command
             ->trim(' ')
             ->replace('/', '\\');
         $widgetClass = (string) str($widget)->afterLast('\\');
-        $widgetNamespace = str($widget)->contains('\\') 
+        $widgetNamespace = str($widget)->contains('\\')
             ? (string) str($widget)->beforeLast('\\')
             : '';
 

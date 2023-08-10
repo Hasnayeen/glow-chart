@@ -21,7 +21,8 @@ class Bar
         public bool $isFunnel3d = true,
         public array $colors = [],
         public ?DataLabels $dataLabels = null,
-    ) {}
+    ) {
+    }
 
     public static function make(): self
     {
@@ -129,12 +130,11 @@ class Bar
     /**
      * Set the color ranges for the chart.
      *
-     * @param array $ranges An array of color ranges. Each range is defined by an array with the following keys:
+     * @param  array  $ranges An array of color ranges. Each range is defined by an array with the following keys:
      *   ranges (array)
      *   + from (int) - Value indicating range’s upper limit
      *   + to (int) - Value indicating range’s lower limit
      *   + color (string) - Color to be used for the range
-     * @return self
      */
     public function colorsRanges(array $ranges): self
     {
@@ -142,12 +142,9 @@ class Bar
 
         return $this;
     }
-    
+
     /**
      * Custom colors for background rects. The number of colors in the array is repeated if fewer colors than data points are specified.
-     *
-     * @param  array $backgroundBarColors
-     * @return self
      */
     public function backgroundBarColors(array $backgroundBarColors): self
     {
@@ -155,12 +152,9 @@ class Bar
 
         return $this;
     }
-    
+
     /**
      * Opacity for background colors of the bar.
-     *
-     * @param  float $backgroundBarOpacity
-     * @return self
      */
     public function backgroundBarOpacity(float $backgroundBarOpacity): self
     {
@@ -168,12 +162,9 @@ class Bar
 
         return $this;
     }
-    
+
     /**
      * Border radius for background rect of the bar.
-     *
-     * @param  int $backgroundBarRadius
-     * @return self
      */
     public function backgroundBarRadius(int $backgroundBarRadius): self
     {

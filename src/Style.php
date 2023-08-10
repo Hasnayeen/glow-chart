@@ -10,7 +10,8 @@ class Style
         public string $fontFamily = 'Helvetica, Arial, sans-serif',
         public int $fontWeight = 400,
         public string $cssClass = 'apexcharts-xaxis-label',
-    ) {}
+    ) {
+    }
 
     public static function make(): self
     {

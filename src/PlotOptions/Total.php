@@ -13,7 +13,8 @@ class Total
         public int $offsetX = 0,
         public int $offsetY = 0,
         public ?Style $style = null,
-    ) {}
+    ) {
+    }
 
     public static function make(): self
     {

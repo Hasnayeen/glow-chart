@@ -7,9 +7,10 @@ class Series
     private function __construct(
         public ?string $name,
         public array $data,
-    ) {}
+    ) {
+    }
 
-    public static function make(?string $name = null, ?array $data = []): self
+    public static function make(string $name = null, ?array $data = []): self
     {
         return new static($name, $data);
     }
