@@ -27,7 +27,8 @@ class Yaxis
         public array $title = [],
         public array $crosshairs = [],
         public array $tooltip = [],
-    ) {}
+    ) {
+    }
 
     public static function make(): self
     {
@@ -142,11 +143,10 @@ class Yaxis
     /**
      * Set the Y axis border options.
      *
-     * @param bool $show Draw a vertical border on the y-axis.
-     * @param string $color Color of the horizontal axis border.
-     * @param int $offsetX Sets the left offset of the axis border.
-     * @param int $offsetY Sets the top offset of the axis border.
-     * @return self
+     * @param  bool  $show Draw a vertical border on the y-axis.
+     * @param  string  $color Color of the horizontal axis border.
+     * @param  int  $offsetX Sets the left offset of the axis border.
+     * @param  int  $offsetY Sets the top offset of the axis border.
      */
     public function axisBorder(bool $show = true, string $color = '#78909C', int $offsetX = 0, int $offsetY = 0): self
     {
@@ -163,13 +163,12 @@ class Yaxis
     /**
      * Set the Y axis ticks options.
      *
-     * @param bool $show Draw ticks on the y-axis to specify intervals.
-     * @param string $borderType Available Options [solid, dotted].
-     * @param string $color Color of the y-axis ticks.
-     * @param int $width Width of the tick mark.
-     * @param int $offsetX Sets the left offset of the tick mark.
-     * @param int $offsetY Sets the top offset of the tick mark.
-     * @return self
+     * @param  bool  $show Draw ticks on the y-axis to specify intervals.
+     * @param  string  $borderType Available Options [solid, dotted].
+     * @param  string  $color Color of the y-axis ticks.
+     * @param  int  $width Width of the tick mark.
+     * @param  int  $offsetX Sets the left offset of the tick mark.
+     * @param  int  $offsetY Sets the top offset of the tick mark.
      */
     public function axisTicks(
         bool $show = true,
@@ -178,12 +177,11 @@ class Yaxis
         int $width = 6,
         int $offsetX = 0,
         int $offsetY = 0,
-    ): self
-    {
+    ): self {
         if ($borderType !== 'solid' && $borderType !== 'dotted') {
             throw new InvalidParameterException('Invalid border type. Available Options [solid, dotted]');
         }
-        
+
         $this->axisTicks = [
             'show' => $show,
             'borderType' => $borderType,
@@ -199,21 +197,19 @@ class Yaxis
     /**
      * Set the Y axis title options.
      *
-     * @param string $text Give the y-axis a title which will be displayed below the axis labels by default.
-     * @param int $rotate Rotate the yaxis title either 90 or -90.
-     * @param int $offsetX Sets the left offset for y-axis title.
-     * @param int $offsetY Sets the top offset for y-axis title.
-     * @param Style $style Style of the y-axis title.
-     * @return self
+     * @param  string  $text Give the y-axis a title which will be displayed below the axis labels by default.
+     * @param  int  $rotate Rotate the yaxis title either 90 or -90.
+     * @param  int  $offsetX Sets the left offset for y-axis title.
+     * @param  int  $offsetY Sets the top offset for y-axis title.
+     * @param  Style  $style Style of the y-axis title.
      */
     public function title(
         string $text = '',
         int $rotate = 0,
         int $offsetX = 0,
         int $offsetY = 0,
-        ?Style $style = null,
-    ): self
-    {
+        Style $style = null,
+    ): self {
         $this->title = [
             'text' => $text,
             'rotate' => $rotate,
@@ -228,12 +224,11 @@ class Yaxis
     /**
      * Set the Y axis crosshairs options.
      *
-     * @param bool $show Show crosshairs on y-axis when user moves the mouse over chart area. Note: Make sure to have yaxis tooltip enabled: 'true' to make the crosshair visible.
-     * @param string $position Possible Options [back, front].
-     * @param string $strokeColor Border Color of crosshairs.
-     * @param string $strokeWidth Border Width of crosshairs.
-     * @param string $strokeDashArray Creates dashes in borders of crosshairs. Higher number creates more space between dashes in the border.
-     * @return self
+     * @param  bool  $show Show crosshairs on y-axis when user moves the mouse over chart area. Note: Make sure to have yaxis tooltip enabled: 'true' to make the crosshair visible.
+     * @param  string  $position Possible Options [back, front].
+     * @param  string  $strokeColor Border Color of crosshairs.
+     * @param  string  $strokeWidth Border Width of crosshairs.
+     * @param  string  $strokeDashArray Creates dashes in borders of crosshairs. Higher number creates more space between dashes in the border.
      */
     public function crosshairs(
         bool $show = true,
@@ -241,8 +236,7 @@ class Yaxis
         string $strokeColor = '#B6B6B6',
         int $strokeWidth = 1,
         int $strokeDashArray = 0,
-    ): self
-    {
+    ): self {
         $this->crosshairs = [
             'show' => $show,
             'position' => $position,
@@ -259,9 +253,8 @@ class Yaxis
     /**
      * Set the Y axis tooltip options.
      *
-     * @param bool $enabled Show tooltip on y-axis when user hovers over axis ticks.
-     * @param string $offsetX Sets the top offset for y-axis tooltip.
-     * @return self
+     * @param  bool  $enabled Show tooltip on y-axis when user hovers over axis ticks.
+     * @param  string  $offsetX Sets the top offset for y-axis tooltip.
      */
     public function tooltip(bool $enabled = true, int $offsetX = 0): self
     {

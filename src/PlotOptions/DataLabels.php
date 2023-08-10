@@ -10,7 +10,8 @@ class DataLabels
         public bool $hideOverflowingLabels = true,
         public string $orientation = 'horizontal',
         public ?Total $total = null,
-    ) {}
+    ) {
+    }
 
     public static function make(): self
     {

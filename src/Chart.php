@@ -10,7 +10,8 @@ class Chart
         public string $type,
         public string $height = '300',
         public ?Toolbar $toolbar = null,
-    ) {}
+    ) {
+    }
 
     public static function make(ChartType $type): self
     {

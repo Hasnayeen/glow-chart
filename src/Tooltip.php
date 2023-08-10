@@ -17,7 +17,8 @@ class Tooltip
         public bool $fillSeriesColor = false,
         public bool $theme = false,
         public ?Style $style = null,
-    ) {}
+    ) {
+    }
 
     public static function make(): self
     {
@@ -62,6 +63,7 @@ class Tooltip
     public function inverseOrder(bool $inverseOrder): self
     {
         $this->inverseOrder = $inverseOrder;
+
         return $this;
     }
 

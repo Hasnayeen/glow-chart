@@ -12,7 +12,8 @@ class PlotOptions
     private function __construct(
         public PlotOptionsType $type,
         public array $options = [],
-    ) {}
+    ) {
+    }
 
     public static function make(PlotOptionsType $type): self
     {
@@ -22,10 +23,9 @@ class PlotOptions
     /**
      * Set the area fill options for the plot.
      *
-     * @param string $fillTo Allowed values ['origin', 'end'].
+     * @param  string  $fillTo Allowed values ['origin', 'end'].
      * When negative values are present in the area chart, this option fill the area either from 0 (origin) or from the end of the chart.
      *
-     * @return self
      * @throws IncorrectPlotOptionsType If the plot type is not area.
      */
     public function area(string $fillTo = 'origin'): self
@@ -48,7 +48,6 @@ class PlotOptions
     /**
      * Set the options for a bar plot.
      *
-     * @return self
      * @throws IncorrectPlotOptionsType If the plot type is not bar.
      */
     public function bar(Bar $bar): self
@@ -64,14 +63,13 @@ class PlotOptions
     /**
      * Set the options for a bubble plot.
      *
-     * @param bool $zScaling Whether to scale the bubble size based on the z-axis values.
-     * @param int $minBubbleRadius The minimum radius of the bubbles.
-     * @param int $maxBubbleRadius The maximum radius of the bubbles.
+     * @param  bool  $zScaling Whether to scale the bubble size based on the z-axis values.
+     * @param  int  $minBubbleRadius The minimum radius of the bubbles.
+     * @param  int  $maxBubbleRadius The maximum radius of the bubbles.
      *
-     * @return self
      * @throws IncorrectPlotOptionsType If the plot type is not bubble.
      */
-    public function bubble(bool $zScaling = true, int $minBubbleRadius, int $maxBubbleRadius): self
+    public function bubble(bool $zScaling, int $minBubbleRadius, int $maxBubbleRadius): self
     {
         if ($this->type !== PlotOptionsType::Bubble) {
             throw new IncorrectPlotOptionsType($this->type, PlotOptionsType::Bubble);
@@ -88,11 +86,10 @@ class PlotOptions
     /**
      * Set the options for a candlestick plot.
      *
-     * @param string $upwardColor The color of the upward candlesticks.
-     * @param string $downwardColor The color of the downward candlesticks.
-     * @param bool $useFillColor Whether to use fill color for the wick.
+     * @param  string  $upwardColor The color of the upward candlesticks.
+     * @param  string  $downwardColor The color of the downward candlesticks.
+     * @param  bool  $useFillColor Whether to use fill color for the wick.
      *
-     * @return self
      * @throws IncorrectPlotOptionsType If the plot type is not candlestick.
      */
     public function candlestick(string $upwardColor, string $downwardColor, bool $useFillColor = true): self
@@ -107,7 +104,7 @@ class PlotOptions
             ],
             'wick' => [
                 'useFillColor' => $useFillColor,
-            ]
+            ],
         ];
 
         return $this;
