@@ -1,14 +1,12 @@
 import ApexCharts from "apexcharts";
 
-export default function glowChart({ options }) {
+export default function glowChart({ id, options }) {
     return {
+        chart: null,
         init: () => {
-            console.log("init chart")
-            console.table(options)
-            this.chart = new ApexCharts(document.querySelector("#chart"), options);
+            this.chart = new ApexCharts(this.$refs[id], options);
             this.chart.render();
         },
-        chart: null,
     }
   
 }

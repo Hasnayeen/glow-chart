@@ -122,14 +122,6 @@ class GlowChartServiceProvider extends PackageServiceProvider
     }
 
     /**
-     * @return array<string>
-     */
-    protected function getRoutes(): array
-    {
-        return [];
-    }
-
-    /**
      * @return array<string, mixed>
      */
     protected function getScriptData(): array

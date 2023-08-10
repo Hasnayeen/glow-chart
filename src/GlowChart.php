@@ -15,7 +15,7 @@ abstract class GlowChart extends Widget
      */
     protected static string $view = 'glow-chart::chart-widget';
 
-    protected static string $id = 'chart-widget';
+    protected static string $chartId = 'chart-widget';
 
     public ?string $filter = null;
 
@@ -27,9 +27,16 @@ abstract class GlowChart extends Widget
 
     protected static ?string $maxHeight = null;
 
-    public function getChartId(): string
+    protected function getChartId(): string
     {
-        return static::$id;
+        return static::$chartId;
+    }
+
+    abstract protected function getOptions(): Options;
+
+    protected function getChartOptions(): array
+    {
+        return $this->cleanOptions($this->getOptions()->toArray());
     }
 
     /**
@@ -40,12 +47,12 @@ abstract class GlowChart extends Widget
         return null;
     }
 
-    public function getHeading(): string | Htmlable | null
+    protected function getHeading(): string | Htmlable | null
     {
         return static::$heading;
     }
 
-    public function getDescription(): string | Htmlable | null
+    protected function getDescription(): string | Htmlable | null
     {
         return static::$description;
     }
@@ -58,5 +65,16 @@ abstract class GlowChart extends Widget
     public function getColor(): string
     {
         return static::$color;
+    }
+
+    private function cleanOptions(array $options): array
+    {
+        foreach ($options as &$value) {
+            if (is_array($value)) {
+                $value = $this->cleanOptions($value);
+            }
+        }
+
+        return array_filter($options, fn ($option) => $option !== null);
     }
 }

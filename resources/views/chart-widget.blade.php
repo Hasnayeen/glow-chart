@@ -43,9 +43,8 @@
                 ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('glow-chart', 'hasnayeen/glow-chart') }}"
                 wire:ignore
                 x-data="glowChart({
-                    {{-- cachedData: @js($this->getCachedData()), --}}
-                    options: @js($this->getOptions()),
-                    {{-- type: @js($this->getType()), --}}
+                    id: @js($chartId),
+                    options: @js($this->getChartOptions()),
                 })"
                 x-ignore
                 @style([
@@ -53,8 +52,7 @@
                 ])
             >
                 <div
-                    id="chart"
-                    x-ref="chart"
+                    x-ref="{{ $chartId }}"
                     @if ($maxHeight = $this->getMaxHeight())
                         style="max-height: {{ $maxHeight }}"
                     @endif
