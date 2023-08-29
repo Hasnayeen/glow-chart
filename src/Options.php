@@ -14,8 +14,8 @@ class Options
         public ?PlotOptions $plotOptions = null,
         public ?Title $title = null,
         public ?Title $subtitle = null,
-    ) {
-    }
+        public ?Stroke $stroke = null,
+    ) {}
 
     public static function make(): self
     {
@@ -85,6 +85,13 @@ class Options
         return $this;
     }
 
+    public function stroke(Stroke $stroke): self
+    {
+        $this->stroke = $stroke;
+
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -97,6 +104,7 @@ class Options
             'plotOptions' => $this->plotOptions?->toArray() ?? null,
             'title' => $this->title?->toArray() ?? null,
             'subtitle' => $this->subtitle?->toArray() ?? null,
+            'stroke' => $this->stroke?->toArray() ?? null,
         ];
     }
 }
