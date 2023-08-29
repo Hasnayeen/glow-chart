@@ -7,8 +7,7 @@ class Series
     private function __construct(
         public ?string $name,
         public array $data,
-    ) {
-    }
+    ) {}
 
     public static function make(string $name = null, ?array $data = []): self
     {
@@ -24,9 +23,16 @@ class Series
 
     public function data(array $data): self
     {
+        if (is_array(head($data))) {
+            $this->data = $data;
+
+            return $this;
+        }
         $this->data = [
-            'name' => $this->name,
-            'data' => $data,
+            [
+                'name' => $this->name,
+                'data' => $data,
+            ]
         ];
 
         return $this;
@@ -34,8 +40,6 @@ class Series
 
     public function toArray(): array
     {
-        return [
-            $this->data,
-        ];
+        return $this->data;
     }
 }

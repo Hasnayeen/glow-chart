@@ -4,11 +4,7 @@ namespace Hasnayeen\GlowChart;
 
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
-use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
-use Filament\Support\Facades\FilamentIcon;
-use Filament\Support\Icons\Icon;
 use Hasnayeen\GlowChart\Commands\GlowChartCommand;
 use Hasnayeen\GlowChart\Testing\TestsGlowChart;
 use Illuminate\Filesystem\Filesystem;
@@ -34,19 +30,10 @@ class GlowChartServiceProvider extends PackageServiceProvider
             ->hasCommands($this->getCommands())
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
-                    ->publishConfigFile()
                     ->askToStarRepoOnGitHub('hasnayeen/glow-chart');
             });
 
         $configFileName = $package->shortName();
-
-        if (file_exists($package->basePath("/../config/{$configFileName}.php"))) {
-            $package->hasConfigFile();
-        }
-
-        if (file_exists($package->basePath('/../resources/lang'))) {
-            $package->hasTranslations();
-        }
 
         if (file_exists($package->basePath('/../resources/views'))) {
             $package->hasViews(static::$viewNamespace);
@@ -66,12 +53,9 @@ class GlowChartServiceProvider extends PackageServiceProvider
         );
 
         FilamentAsset::registerScriptData(
-            $this->getScriptData(),
+            [],
             $this->getAssetPackageName()
         );
-
-        // Icon Registration
-        FilamentIcon::register($this->getIcons());
 
         // Handle Stubs
         if (app()->runningInConsole()) {
@@ -98,8 +82,6 @@ class GlowChartServiceProvider extends PackageServiceProvider
     {
         return [
             AlpineComponent::make('glow-chart', __DIR__ . '/../resources/dist/glow-chart.js'),
-            // Css::make('glow-chart-styles', __DIR__ . '/../resources/dist/glow-chart.css'),
-            // Js::make('glow-chart-scripts', __DIR__ . '/../resources/dist/glow-chart.js'),
         ];
     }
 
@@ -111,21 +93,5 @@ class GlowChartServiceProvider extends PackageServiceProvider
         return [
             GlowChartCommand::class,
         ];
-    }
-
-    /**
-     * @return array<string, Icon>
-     */
-    protected function getIcons(): array
-    {
-        return [];
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    protected function getScriptData(): array
-    {
-        return [];
     }
 }
