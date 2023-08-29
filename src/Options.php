@@ -15,7 +15,8 @@ class Options
         public ?Title $title = null,
         public ?Title $subtitle = null,
         public ?Stroke $stroke = null,
-    ) {}
+    ) {
+    }
 
     public static function make(): self
     {

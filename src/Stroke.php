@@ -6,12 +6,13 @@ class Stroke
 {
     private function __construct(
         public bool $show = true,
-        public string|array $curve = 'smooth',
+        public string | array $curve = 'smooth',
         public string $lineCap = 'butt',
         public array $colors = [],
-        public int|array $width = 2,
-        public int|array $dashArray = 0,
-    ) {}
+        public int | array $width = 2,
+        public int | array $dashArray = 0,
+    ) {
+    }
 
     public static function make(): self
     {
@@ -45,6 +46,7 @@ class Stroke
      *      straight: connect the points in straight lines.
      *      stepline: points are connected by horizontal and vertical line segments, looking like steps of a staircase.
      *  You can also pass an array in stroke.curve, where each index corresponds to the series-index in multi-series charts.
+     *
      * @example 'smooth' or ['smooth', 'straight', 'stepline']
      */
     public function curve(string $curve): self
@@ -55,7 +57,7 @@ class Stroke
     }
 
     /**
-     *  For setting the starting and ending points of stroke 
+     *  For setting the starting and ending points of stroke
      *  Available Options:
      *      butt: ends the stroke with a 90-degree angle
      *      square: similar to butt except that it extends the stroke beyond the length of the path
@@ -72,7 +74,7 @@ class Stroke
      * Sets the width of border for svg path.
      * N.B: array valid only for line/area charts
      */
-    public function width(int|array $width): self
+    public function width(int | array $width): self
     {
         $this->width = $width;
 
@@ -80,9 +82,9 @@ class Stroke
     }
 
     /**
-     * Creates dashes in borders of svg path. Higher number creates more space between dashes in the border. 
+     * Creates dashes in borders of svg path. Higher number creates more space between dashes in the border.
      */
-    public function dashArray(int|array $dashArray): self
+    public function dashArray(int | array $dashArray): self
     {
         $this->dashArray = $dashArray;
 
