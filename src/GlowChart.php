@@ -42,7 +42,7 @@ abstract class GlowChart extends Widget
             ->when(
                 $this->getResource(),
                 fn ($series) => $series->model(static::$resource::getModel())
-        );
+            );
     }
 
     public function mount(): void

@@ -29,13 +29,13 @@ class Series
 
     private function __construct(
         public ?string $name,
-        public array|Collection $data,
+        public array | Collection $data,
         public ?Model $model = null,
         public ?Trend $trend = null,
     ) {
     }
 
-    public static function make(string $name = null, array|Collection $data = []): self
+    public static function make(string $name = null, array | Collection $data = []): self
     {
         return new static($name, $data);
     }
@@ -47,7 +47,7 @@ class Series
         return $this;
     }
 
-    public function data(array|Collection $data = []): self
+    public function data(array | Collection $data = []): self
     {
         if (empty($data)) {
             $this->data = [];
@@ -75,7 +75,7 @@ class Series
         return $this;
     }
 
-    public function model(string|Model $model): self
+    public function model(string | Model $model): self
     {
         if (is_string($model)) {
             $this->model = new $model();
@@ -121,6 +121,6 @@ class Series
             return $this;
         }
 
-        throw new Error("Call to undefined method " . __CLASS__ . "::{$name}()");
+        throw new Error('Call to undefined method ' . __CLASS__ . "::{$name}()");
     }
 }
