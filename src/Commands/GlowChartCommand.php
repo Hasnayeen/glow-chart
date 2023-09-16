@@ -169,8 +169,9 @@ class GlowChartCommand extends Command
             ],
         );
 
-        $this->copyStubToApp('GlowChart', $path, [
+        $this->copyStubToApp($resource ? 'Resource' : '' . 'GlowChart', $path, [
             'class' => $widgetClass,
+            'resource' => $resource,
             'namespace' => filled($resource) ? "{$resourceNamespace}\\{$resource}\\Widgets" . ($widgetNamespace !== '' ? "\\{$widgetNamespace}" : '') : $namespace . ($widgetNamespace !== '' ? "\\{$widgetNamespace}" : ''),
             'type' => match ($chart) {
                 'Line Chart' => 'Line',

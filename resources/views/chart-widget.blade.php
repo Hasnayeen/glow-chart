@@ -35,7 +35,7 @@
 
         <div
             @if ($pollingInterval = $this->getPollingInterval())
-                wire:poll.{{ $pollingInterval }}="updateChartData"
+                wire:poll.{{ $pollingInterval }}="updateChartSeries"
             @endif
         >
             <div

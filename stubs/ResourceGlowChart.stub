@@ -10,6 +10,8 @@ use Hasnayeen\GlowChart\Series;
 
 class {{ class }} extends GlowChart
 {
+    protected static ?string $resource = {{ $resource }}::class;
+
     protected static string $id = '{{ class }}';
 
     protected static ?string $heading = 'Chart';
